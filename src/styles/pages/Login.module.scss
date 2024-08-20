@@ -1,0 +1,72 @@
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .inputContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  .loginButton {
+    padding: 10px;
+    background-color: #36a2eb;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .socialLoginContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .googleButton,
+  .facebookButton {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    flex: 1;
+    margin: 0 5px;
+  }
+  
+  .googleButton {
+    background-color: #db4437; /* Google Red */
+    color: white;
+  }
+  
+  .facebookButton {
+    background-color: #3b5998; /* Facebook Blue */
+    color: white;
+  }
+  

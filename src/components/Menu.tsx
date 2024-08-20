@@ -15,7 +15,8 @@ const Menu: React.FC = () => {
   const menuItems = [
     { to: '/profile', label: 'Profile' },
     { to: '/settings', label: 'Settings' },
-    { to: '/logout', label: 'Logout' }
+    { to: '/logout', label: 'Logout' },
+    { to: '/login', label: 'Login' }
   ];
 
   return (

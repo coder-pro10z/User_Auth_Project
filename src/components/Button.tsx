@@ -1,16 +1,18 @@
 import React from 'react';
-
+import styles from '../styles/Button.module.scss';
 interface ButtonProps {
-  label: string;
   onClick: () => void;
+  children: React.ReactNode;
+  className?:string;
 }
 
-const Button: React.FC<ButtonProps> = ({ label, onClick }) => (
+const Button: React.FC<ButtonProps> = ({ onClick, children,className }) => (
   <button
-    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+  className={`${styles.button} ${className}`}
+    // className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
     onClick={onClick}
   >
-    {label}
+    {children}
   </button>
 );
 
