@@ -1,0 +1,23 @@
+// :root {
+//     --color-work: #FF6384;
+//     --color-exercise: #36A2EB;
+//     --color-leisure: #FFCE56;
+//     --color-sleep: #4BC0C0;
+//     --color-other: #9966FF;
+//   }
+
+// src/styles/colors.scss
+
+$work-color: #FF6384;
+$exercise-color: #36A2EB;
+$leisure-color: #FFCE56;
+$sleep-color: #4BC0C0;
+$other-color: #9966FF;
+
+:export {
+  workColor: #{$work-color};
+  exerciseColor: #{$exercise-color};
+  leisureColor: #{$leisure-color};
+  sleepColor: #{$sleep-color};
+  otherColor: #{$other-color};
+}
