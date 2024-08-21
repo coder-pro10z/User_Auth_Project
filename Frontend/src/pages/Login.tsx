@@ -44,6 +44,10 @@ const LoginPage: React.FC = () => {
       });
 
       if (response.ok) {
+        // setUsername(email);
+        const data = await response.json(); // Parse the JSON response
+        const { username } = data; // Extract the username from the response
+        setUsername(username); // Set the username in your app's state
         setShowDialog(true);
         setTimeout(() => {
           setShowDialog(false);
