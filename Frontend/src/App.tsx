@@ -6,9 +6,11 @@ import HomePage from './pages/Home';
 import LoginPage from './pages/Login';
 import Layout from './components/Layout';
 import RegisterPage from './pages/Register';
+import { AuthProvider } from './components/AuthContext';
 function App() {
   return (
-    <Router>
+    <AuthProvider>
+  <Router>
 
       <Layout>  
         {/* Main content area, taking up remaining space */}
@@ -23,8 +25,8 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
         </Routes>
       </Layout>
-
     </Router>
+  </AuthProvider>
   );
 }
 

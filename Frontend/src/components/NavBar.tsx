@@ -2,9 +2,14 @@ import React from 'react';
 import Menu from './Menu';
 import { useLocation } from 'react-router-dom';
 import { FaIcons } from 'react-icons/fa';
+import { useAuth } from './AuthContext';
 // import Menu from '/Menu'; // Assuming you have a Menu component
+// interface NavBarProps {
+//   username: string;
+// }
 
 const NavBar: React.FC = () => {
+  const { username } = useAuth(); // Get the username from context
 
     const location = useLocation();
   const path = location.pathname;
@@ -43,6 +48,7 @@ const NavBar: React.FC = () => {
         <div className="flex-1 text-center">
           <span className="text-lg font-semibold">{getPageTitle(path)}</span>
         </div>
+        <div>{username && <span>Welcome, {username}</span>}</div>
         <Menu />
       </div>
     </header>

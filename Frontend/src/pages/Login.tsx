@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import styles from '../styles/pages/Login.module.scss';
-
+import api from '../utils/api';
+import { useNavigate } from 'react-router-dom';
+import SuccessDialog from '../components/SuccessDialog';
+import { useAuth } from '../components/AuthContext'; // Import the context
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const [showDialog, setShowDialog] = useState(false);
+  const navigate = useNavigate();
+  const { setUsername } = useAuth(); // Destructure setUsername from context
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -13,9 +20,45 @@ const LoginPage: React.FC = () => {
     setPassword(event.target.value);
   };
 
-  const handleLogin = () => {
-    // Handle login logic here
-    console.log('Logging in with:', { email, password });
+  // const handleLogin = async () => {
+  //   // Handle login logic here
+  //   try {
+  //     const res = await api.post('/auth/login', { email, password });
+  //     console.log('login successful:', res.data);
+  //     // Optionally redirect or display a success message
+  //   } catch (error) {
+  //     console.error('Login failed:',error);
+  //     // Optionally display error messages
+  //   }
+  //   console.log('Logging in with:', { email, password });
+  // };
+
+  const handleLogin = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+        setShowDialog(true);
+        setTimeout(() => {
+          setShowDialog(false);
+          // Store username in state or context
+          // Assuming `setUsername` is available in your app's context or global state
+          navigate('/');
+        }, 2000); // Show dialog for 2 seconds then redirect
+      
+      } else {
+        const error = await response.json();
+        alert('Registration failed: ' + error.message);
+      }
+    } catch (error) {
+      alert('An error occurred: ' + error);
+    }
   };
 
   const handleGoogleSignIn = () => {
@@ -26,6 +69,12 @@ const LoginPage: React.FC = () => {
   const handleFacebookSignIn = () => {
     // Handle Facebook sign-in logic here
     console.log('Signing in with Facebook');
+  };
+
+  // setShowDialog(true);
+  const handleCloseDialog = () => {
+    setShowDialog(false);
+    navigate('/'); // Redirect to Home after closing the dialog
   };
 
   return (
@@ -51,6 +100,12 @@ const LoginPage: React.FC = () => {
         Login
       </button>
       <a className={styles.register} href='/register'>Not a user? Register here</a>
+      {showDialog && (
+        <SuccessDialog
+          message="Login Successful"
+          onClose={handleCloseDialog}
+        />
+      )}
       <div className={styles.socialLoginContainer}>
         <button onClick={handleGoogleSignIn} className={styles.googleButton}>
           Sign in with Google
