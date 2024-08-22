@@ -3,8 +3,8 @@
 import TimeTracker from 'components/TimeTracker';
 import React from 'react';
 
-const HomePage: React.FC = () => {
-  const appname='Balanced';
+const appname='MyAuthApp';
+const HomePage = () => {
   const username='';
   return (<>
       <div className="flex flex-col items-center justify-center h-full bg-gray-100 text-gray-800">
@@ -16,3 +16,4 @@ const HomePage: React.FC = () => {
 };
 
 export default HomePage;
+export {appname};

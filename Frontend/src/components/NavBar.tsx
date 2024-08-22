@@ -3,10 +3,7 @@ import Menu from './Menu';
 import { useLocation } from 'react-router-dom';
 import { FaIcons } from 'react-icons/fa';
 import { useAuth } from './AuthContext';
-// import Menu from '/Menu'; // Assuming you have a Menu component
-// interface NavBarProps {
-//   username: string;
-// }
+import {appname} from '../pages/Home'
 
 const NavBar: React.FC = () => {
   const { username } = useAuth(); // Get the username from context
@@ -42,7 +39,7 @@ const NavBar: React.FC = () => {
         <div className="flex items-center space-x-4">
           {/* Icon or logo on the left */}
           <FaIcons /> {/* Replace with your desired icon */}
-          <span className="font-bold text-xl">Balanced</span>
+          <span className="font-bold text-xl">{appname}</span>
         </div>
         {/* Dynamic title in the center */}
         <div className="flex-1 text-center">
