@@ -7,7 +7,7 @@ import { useAuth } from '../components/AuthContext'; // Import the context
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+const {login}=useAuth();
   const [showDialog, setShowDialog] = useState(false);
   const navigate = useNavigate();
   const { setUsername } = useAuth(); // Destructure setUsername from context
@@ -46,8 +46,9 @@ const LoginPage: React.FC = () => {
       if (response.ok) {
         // setUsername(email);
         const data = await response.json(); // Parse the JSON response
-        const { username } = data; // Extract the username from the response
-        setUsername(username); // Set the username in your app's state
+        login(data.username, data.token);
+        // const { username } = data; // Extract the username from the response
+        // setUsername(username); // Set the username in your app's state
         setShowDialog(true);
         setTimeout(() => {
           setShowDialog(false);
