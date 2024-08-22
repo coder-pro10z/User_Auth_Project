@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import styles from '../styles/pages/Login.module.scss'; // Reuse the same styles as LoginPage
-import api from '../utils/api';
-import SuccessDialog from '../components/SuccessDialog';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styles from "../styles/pages/Login.module.scss"; // Reuse the same styles as LoginPage
+import api from "../utils/api";
+import SuccessDialog from "../components/SuccessDialog";
 const RegisterPage: React.FC = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const navigate = useNavigate();
@@ -40,10 +40,10 @@ const RegisterPage: React.FC = () => {
 
   const handleRegister = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/auth/register', {
-        method: 'POST',
+      const response = await fetch("http://localhost:5000/api/auth/register", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, email, password }),
       });
@@ -52,16 +52,16 @@ const RegisterPage: React.FC = () => {
         setIsDialogOpen(true);
       } else {
         const error = await response.json();
-        alert('Registration failed: ' + error.message);
+        alert("Registration failed: " + error.message);
       }
     } catch (error) {
-      alert('An error occurred: ' + error);
+      alert("An error occurred: " + error);
     }
   };
 
   const handleCloseDialog = () => {
     setIsDialogOpen(false);
-    navigate('/login'); // Redirect to Home after closing the dialog
+    navigate("/login"); // Redirect to Home after closing the dialog
   };
   return (
     <div className={styles.loginContainer}>
@@ -92,7 +92,9 @@ const RegisterPage: React.FC = () => {
       <button onClick={handleRegister} className={styles.loginButton}>
         Register
       </button>
-      <a className={styles.register} href='/login'>Already have an account? Login here</a>
+      <a className={styles.register} href="/login">
+        Already have an account? Login here
+      </a>
       {isDialogOpen && (
         <SuccessDialog
           message="User Registered Successfully"

@@ -1,5 +1,5 @@
-import React from 'react';
-import styles from '../styles/SuccessDialog.module.scss';
+import React from "react";
+import styles from "../styles/SuccessDialog.module.scss";
 
 interface AlertProps {
   message: string;
@@ -11,7 +11,9 @@ const AlertBox: React.FC<AlertProps> = ({ message, onClose }) => {
     <div className={styles.dialogOverlay}>
       <div className={styles.dialogContainer}>
         <p>{message}</p>
-        <button onClick={onClose} className={styles.dialogButton}>OK</button>
+        <button onClick={onClose} className={styles.dialogButton}>
+          OK
+        </button>
       </div>
     </div>
   );

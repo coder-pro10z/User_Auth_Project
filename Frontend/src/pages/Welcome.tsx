@@ -1,3 +1,1 @@
-export const Welcome = () => {
-
-}
+export const Welcome = () => {};
